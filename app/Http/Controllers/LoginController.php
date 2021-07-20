@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -21,7 +22,10 @@ class LoginController extends Controller
         $email=$request->email;
         $phone=$request->phone;
         $birth=Carbon::create($birth_y, $birth_m, $birth_d)->toDateString();
-        dd($request);
+
+        $user = new User();
+        
+        dd($birth);
     }
 
     protected function uploadPostImage($request) {

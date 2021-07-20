@@ -17,8 +17,9 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->string('project_name');
             $table->longText('outline');
-            $table->longText('expectaion');
+            $table->longText('expectation');
             $table->string('file');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
