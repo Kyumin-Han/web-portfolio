@@ -206,7 +206,6 @@
                         </h3>
                         <span class="box int_id">
                             <input type="text" name="id" id="id" class="int" maxlength="20">
-                            <span class="step_url">@naver.com</span>
                         </span>
 
                         <span class="error_next_box">
@@ -223,7 +222,6 @@
                         <span class="box int_pass">
                             <input type="password" name="password" id="pswd1" class="int" maxlength="20">
                             <span id="alertTxt">사용불가</span>
-                            <img src="" id="pswd1_img1" class="pswdImg">
                         </span>
                         <span class="error_next_box">
                             @error('password')
@@ -239,7 +237,7 @@
                         </h3>
                         <span class="box int_pass_check">
                             <input type="password" name="confirm" id="pswd2" class="int" maxlength="20">
-                            <img src="" id="pswd2_img1" class="pswdImg">
+                            
                         </span>
                         <span class="error_next_box">
                             @error('confirm')
