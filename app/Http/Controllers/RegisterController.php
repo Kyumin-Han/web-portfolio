@@ -42,6 +42,7 @@ class RegisterController extends Controller
         $user->email = $email;
         $user->birth = $birth;
         $user->phone = $phone;
+        $user->name = $name;
         if($request->file('imageFile')) {
             $user->image=$this->uploadPostImage($request);
         }

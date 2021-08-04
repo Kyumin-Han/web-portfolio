@@ -3,18 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>회원가입</title>
-        <!-- <link rel="stylesheet" href="register.css"> -->
+
         <style>
             /* 레이아웃 틀 */
-            html {
-                height: 100%;
-            }
 
             body {
                 margin: 0;
                 height: 100%;
-                background: #f5f6f7;
-                font-family: Dotum,'돋움',Helvetica,sans-serif;
+                background-color: #E6E6FA;
             }
             #logo {
                 width: 240px;
@@ -68,10 +64,6 @@
                 font-size: 15px;
             }
 
-            input {
-                font-family: Dotum,'돋움',Helvetica,sans-serif;
-            }
-
             .box.int_id {
                 padding-right: 110px;
             }
@@ -85,23 +77,11 @@
             }
 
             .step_url {
-                /*@naver.com*/
                 position: absolute;
                 top: 16px;
                 right: 13px;
                 font-size: 15px;
                 color: #8e8e8e;
-            }
-
-            .pswdImg {
-                width: 18px;
-                height: 20px;
-                display: inline-block;
-                position: absolute;
-                top: 50%;
-                right: 16px;
-                margin-top: -10px;
-                cursor: pointer;
             }
 
             #bir_wrap {
@@ -135,14 +115,12 @@
                 width: 100%;
                 height: 29px;
                 font-size: 15px;
-                background: #fff url("https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif") 100% 50% no-repeat;
                 background-size: 20px 8px;
                 -webkit-appearance: none;
                 display: inline-block;
                 text-align: start;
                 border: none;
                 cursor: default;
-                font-family: Dotum,'돋움',Helvetica,sans-serif;
             }
 
             /* 에러메세지 */
@@ -174,220 +152,175 @@
                 padding: 21px 0 17px;
                 border: 0;
                 cursor: pointer;
-                color: #fff;
-                /* background-color: #08a600; */
-                background-color: #6799FF;
+                color: white;
+                background-color: #7B68EE;
                 font-size: 20px;
                 font-weight: 400;
-                font-family: Dotum,'돋움',Helvetica,sans-serif;
+            }
+
+            /* 로고이미지 */
+            .logo {
+                width: 300px;
+                height: 300px;
             }
         </style>
     </head>
     <body>
         <!-- header -->
-        <!-- Ctrl+b 하면 바로가짐 -->
-        <!-- 파일은 C\TeamProject에 있음 -->
-        {{-- <div id="header">
-            
-        </div> --}}
+        <div id="header">
+            <img class="logo" alt="사진없어여" src="/image/HatchfulExport-All/logo_transparent.png">
 
-        <!-- wrapper -->
+        </div>
+
         <form action="/store" method="post" enctype="multipart/form-data">
-            @csrf
-            <div id="wrapper">
+        @csrf
+        <!-- wrapper -->
+        <div id="wrapper">
 
-                <!-- content-->
-                <div id="content">
+            <!-- content-->
+            <div id="content">
+                <!-- Name -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="id">이름</label>
+                    </h3>
+                    <span class="box int_name">
+                        <input type="text" name="name" id="name" class="int" maxlength="20">
 
-                    <!-- ID -->
-                    <div>
-                        <h3 class="join_title">
-                            <label for="id">아이디</label>
-                        </h3>
-                        <span class="box int_id">
-                            <input type="text" name="id" id="id" class="int" maxlength="20">
-                        </span>
-
-                        <span class="error_next_box">
-                            @error('id')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror</span>
-                    </div>
-
-                    <!-- PW1 -->
-                    <div>
-                        <h3 class="join_title">
-                            <label for="pswd1">비밀번호</label>
-                        </h3>
-                        <span class="box int_pass">
-                            <input type="password" name="password" id="pswd1" class="int" maxlength="20">
-                            <span id="alertTxt">사용불가</span>
-                        </span>
-                        <span class="error_next_box">
-                            @error('password')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror
-                        </span>
-                    </div>
-
-                    <!-- PW2 -->
-                    <div>
-                        <h3 class="join_title">
-                            <label for="pswd2">비밀번호 재확인</label>
-                        </h3>
-                        <span class="box int_pass_check">
-                            <input type="password" name="confirm" id="pswd2" class="int" maxlength="20">
-                            
-                        </span>
-                        <span class="error_next_box">
-                            @error('confirm')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror
-                        </span>
-                    </div>
-
-                    <!-- NAME -->
-                    <div>
-                        <h3 class="join_title">
-                            <label for="name">이름</label>
-                        </h3>
-                        <span class="box int_name">
-                            <input type="text" name="name" id="name" class="int" maxlength="20">
-                        </span>
-                        <span class="error_next_box">
-                            @error('name')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror
-                        </span>
-                    </div>
-
-                    <!-- BIRTH -->
-                    <div>
-                        <h3 class="join_title">
-                            <label for="yy">생년월일</label>
-                        </h3>
-
-                        <div id="bir_wrap">
-                            <!-- BIRTH_YY -->
-                            <div id="bir_yy">
-                                <span class="box">
-                                    <input
-                                        type="text"
-                                        name="year"
-                                        id="yy"
-                                        class="int"
-                                        maxlength="4"
-                                        placeholder="년(4자)">
-                                </span>
-                                @error('year')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror
-                            </div>
-
-                            <!-- BIRTH_MM -->
-                            <div id="bir_mm">
-                                <span class="box">
-                                    <select name="month" id="mm" class="sel">
-                                        <option>월</option>
-                                        <option value="01">1</option>
-                                        <option value="02">2</option>
-                                        <option value="03">3</option>
-                                        <option value="04">4</option>
-                                        <option value="05">5</option>
-                                        <option value="06">6</option>
-                                        <option value="07">7</option>
-                                        <option value="08">8</option>
-                                        <option value="09">9</option>
-                                        <option value="10">10</option>
-                                        <option value="11">11</option>
-                                        <option value="12">12</option>
-                                    </select>
-                                </span>
-                                @error('month')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror
-                            </div>
-
-                            <!-- BIRTH_DD -->
-                            <div id="bir_dd">
-                                <span class="box">
-                                    <input type="text" name="day" id="dd" class="int" maxlength="2" placeholder="일">
-                                </span>
-                                @error('day')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror
-                            </div>
-
-                        </div>
-                        <span class="error_next_box"></span>
-                    </div>
-
-                    <!-- EMAIL -->
-                    <div>
-                        <h3 class="join_title">
-                            <label for="email">본인확인 이메일<span class="optional">(필수)</span></label>
-                        </h3>
-                        <span class="box int_email">
-                            <input
-                                type="text"
-                                name="email"
-                                id="email"
-                                class="int"
-                                maxlength="100"
-                                placeholder="필수입력">
-                        </span>
-                        @error('eamil')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror
-                        <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
-                    </div>
-
-                    <!-- MOBILE -->
-                    <div>
-                        <h3 class="join_title">
-                            <label for="phoneNo">휴대전화</label>
-                        </h3>
-                        <span class="box int_mobile">
-                            <input
-                                type="tel"
-                                name="phone"
-                                id="mobile"
-                                class="int"
-                                maxlength="16"
-                                placeholder="전화번호 입력">
-                        </span>
-                        @error('phone')
-                            <div class="text-danger fw-bold">{{ $message }}</div>
-                            @enderror
-                        <span class="error_next_box"></span>
-                    </div>
-
-                    <div>
-                        <h3 class="join_title">
-                            <label for="photoNo">사진등록</label>
-                        </h3>
-                        <input
-                            type="file"
-                            name="imageFile"
-                            id="real-input"
-                            class="image_inputType_file"
-                            accept="img/*"
-                            multiple="multiple">
-                    </div>
-
-                    <!-- JOIN BTN-->
-                    <div class="btn_area">
-                        <button type="submit" id="btnJoin">
-                            <span>가입하기</span>
-                        </button>
-                    </div>
-
+                    </span>
+                    <span class="error_next_box"></span>
                 </div>
-                <!-- content-->
+
+                <!-- ID -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="id">아이디</label>
+                    </h3>
+                    <span class="box int_id">
+                        <input type="text" name="id" id="id" class="int" maxlength="20">
+
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                <button>중복체크</button>
+
+                <!-- PW1 -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="pswd1">비밀번호</label>
+                    </h3>
+                    <span class="box int_pass">
+                        <input type="password" name="password" id="pswd1" class="int" maxlength="20">
+                        <span id="alertTxt">사용불가</span>
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- PW2 -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="pswd2">비밀번호 재확인</label>
+                    </h3>
+                    <span class="box int_pass_check">
+                        <input type="password" id="pswd2" class="int" maxlength="20">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- BIRTH -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="yy">생년월일</label>
+                    </h3>
+
+                    <div id="bir_wrap">
+                        <!-- BIRTH_YY -->
+                        <div id="bir_yy">
+                            <span class="box">
+                                <input type="text" name="year" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                            </span>
+                        </div>
+
+                        <!-- BIRTH_MM -->
+                        <div id="bir_mm">
+                            <span class="box">
+                                <select name="month" id="mm" class="sel">
+                                    <option>월</option>
+                                    <option value="01">1</option>
+                                    <option value="02">2</option>
+                                    <option value="03">3</option>
+                                    <option value="04">4</option>
+                                    <option value="05">5</option>
+                                    <option value="06">6</option>
+                                    <option value="07">7</option>
+                                    <option value="08">8</option>
+                                    <option value="09">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </span>
+                        </div>
+
+                        <!-- BIRTH_DD -->
+                        <div id="bir_dd">
+                            <span class="box">
+                                <input type="text" name="day" id="dd" class="int" maxlength="2" placeholder="일">
+                            </span>
+                        </div>
+
+                    </div>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- EMAIL -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="email">본인확인 이메일</label>
+                    </h3>
+                    <span class="box int_email">
+                        <input type="text" name="email" id="email" class="int" maxlength="100" placeholder="필수입력">
+                    </span>
+                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
+                </div>
+
+                <!-- MOBILE -->
+                <div>
+                    <h3 class="join_title">
+                        <label for="phoneNo">휴대전화</label>
+                    </h3>
+                    <span class="box int_mobile">
+                        <input type="tel" name="phone" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <div>
+                    <h3 class="join_title">
+                        <label for="photoNo">사진등록</label>
+                    </h3>
+                    <input
+                        type="file"
+                        name="imageFile"
+                        id="real-input"
+                        class="image_inputType_file"
+                        accept="img/*"
+                        multiple="multiple">
+                </div>
+
+                <!-- JOIN BTN-->
+                <div class="btn_area">
+                    <button type="submit" id="btnJoin">
+                        <span>가입하기</span>
+                    </button>
+                </div>
 
             </div>
-        </form>
+            <!-- content-->
+
+        </div>
+    </form>
         <!-- wrapper -->
-        <script src="main.js"></script>
+        <!-- <script src="main.js"></script> -->
     </body>
 </html>

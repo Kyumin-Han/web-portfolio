@@ -93,17 +93,16 @@
 
             <a
                 class="btn btn-primary btn-lg"
-                href="#"
+                href="/register"
                 role="button"
                 id="signUpPage"
-                onclick='signUpPage()'>회원가입</a>
+                >회원가입</a>
 
             <a
                 class="btn btn-primary btn-lg"
-                href="#"
+                href="/loginPage"
                 role="button"
-                id="signInPage"
-                onclick='signInPage()'>로그인</a>
+                id="signInPage">로그인</a>
 
         </div>
 
@@ -113,17 +112,15 @@
 
             <a
                 class="btn btn-primary btn-lg"
-                href="#"
+                href="/projectForm"
                 role="button"
-                id="projectForm"
-                onclick='projectForm()'>팀프로젝트 등록</a>
+                id="projectForm">팀프로젝트 등록</a>
 
             <a
                 class="btn btn-primary btn-lg"
-                href="#"
+                href="/mypage"
                 role="button"
-                id="mypage"
-                onclick='mypage()'>마이페이지</a>
+                id="mypage">마이페이지</a>
 
             <hr>
         </div>

@@ -15,39 +15,66 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
-        <title>login</title>
+        <title>signin</title>
 
         <style>
             body {
                 margin: 3%;
+                text-align: center;
+                background-color: #E6E6FA;
+            }
+
+            /* 로고이미지 */
+            .logo {
+                width: 300px;
+                height: 300px;
+            }
+
+            #signIn {
+                color: white;
+                background-color: #7B68EE;
+                border: 0;
+            }
+
+            #IDL,
+            #PWL {
+                width: 30%;
+                float: left;
+
+            }
+
+            #IDI,
+            #PWI {
+                float: left;
+                width: 60%;
+
             }
         </style>
     </head>
     <body>
-        <form action="/action" method="post">
+        <form action="/login">
+        <img class="logo" alt="사진없어여" src="/image/HatchfulExport-All/logo_transparent.png">
+
         <!-- id -->
-        @csrf
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">
+            <label for="exampleFormControlInput1" class="form-label" id="IDL">
                 ID
             </label>
-            <input
-                type="text"
-                class="form-control"
-                id="exampleFormControlInput1"
-                placeholder="아이디를 입력 해 주세요">
-        </div>
 
+            <input type="email" class="form-control" id="IDI" placeholder="아이디를 입력 해 주세요">
+        </div>
+        <br>
         <!-- pw -->
         <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-            <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword">
-            </div>
+            <label for="inputPassword" class="col-sm-2 col-form-label" id="PWL">
+                Password
+            </label>
+
+            <input type="password" class="form-control" id="PWI">
+
         </div>
-        <button>
-            login
-        </button>
+
+        <button type="submit" class="btn btn-primary" id="signIn">SIGN IN</button>
     </form>
     </body>
 </html>

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\ProjectFormController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +25,10 @@ Route::get('/register', [RegisterController::class, 'register']);
 
 Route::post('/store', [RegisterController::class, 'store']);
 
-Route::get('/login', [LoginController::class, 'login']);
+Route::get('/loginPage', [LoginController::class, 'loginPage']);
 
-Route::post('/action', [LoginController::class, 'action']);
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/mypage', [MyPageController::class, 'mypage']);
+
+Route::get('/projectForm', [ProjectFormController::class, 'projectForm']);
