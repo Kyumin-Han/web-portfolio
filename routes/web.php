@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('main');
-});
+})->name('main');
 
 Route::get('/register', [RegisterController::class, 'register']);
 
@@ -29,6 +29,8 @@ Route::get('/loginPage', [LoginController::class, 'loginPage']);
 
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/mypage', [MyPageController::class, 'mypage']);
+Route::get('/mypage', [MyPageController::class, 'mypage'])->name('mypage');
 
 Route::get('/projectForm', [ProjectFormController::class, 'projectForm']);
+
+Route::post('/logout', [LoginController::class, 'logout']);

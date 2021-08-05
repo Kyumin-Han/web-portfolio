@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class LoginController extends Controller
 {
@@ -16,9 +17,14 @@ class LoginController extends Controller
         $password=$request->password;
         $credentials=['uid'=>$id, 'password'=>$password];
 
-        if(!auth()->attempt($credentials)){
+        if(!Auth::attempt($credentials)){
             return "로그인 정보가 정확하지 않습니다.";
         }
-        return view('loginPage', ['login'=>auth()->user()]);
+        return redirect()->route('mypage', ['login'=>auth()->user()]);
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('main');
     }
 }

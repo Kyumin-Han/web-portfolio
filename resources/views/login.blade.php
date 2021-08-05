@@ -52,7 +52,8 @@
         </style>
     </head>
     <body>
-        <form action="/login">
+        <form action="/login" method="post">
+        @csrf
         <img class="logo" alt="사진없어여" src="/image/HatchfulExport-All/logo_transparent.png">
 
         <!-- id -->
@@ -61,7 +62,7 @@
                 ID
             </label>
 
-            <input type="email" class="form-control" id="IDI" placeholder="아이디를 입력 해 주세요">
+            <input type="text" class="form-control" name="id" id="IDI" placeholder="아이디를 입력 해 주세요">
         </div>
         <br>
         <!-- pw -->
@@ -70,7 +71,7 @@
                 Password
             </label>
 
-            <input type="password" class="form-control" id="PWI">
+            <input type="password" name="password" class="form-control" id="PWI">
 
         </div>
 

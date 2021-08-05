@@ -90,26 +90,38 @@
                 우리는 무엇이든 할 수 있고, 우리는 무엇이든 될 수 있어 ! 가자!</p>
             <hr class="my-4">
             <p>여럿이서 과제하는데 모일 필요가 없다고?! 원하는 장소에서 뚞딲!</p>
-
-            <a
+     
+            @if (!auth()->check())
+                <a
                 class="btn btn-primary btn-lg"
                 href="/register"
                 role="button"
                 id="signUpPage"
                 >회원가입</a>
-
-            <a
+                <a
                 class="btn btn-primary btn-lg"
                 href="/loginPage"
                 role="button"
                 id="signInPage">로그인</a>
+                @else
+                <form action="/logout" method="post">
+                    @csrf
+                    <button
+                    class="btn btn-primary btn-lg"
+                    type="submit"
+                    role="button"
+                    id="logout">로그아웃</button>
+                </form>
+            @endif
+            
+            
 
         </div>
 
+        @if(auth()->check())
         <div id="ifLogin">
             <!-- 로그인 되어 있을 경우 보이는 버튼 -->
             <hr class="my-4">
-
             <a
                 class="btn btn-primary btn-lg"
                 href="/projectForm"
@@ -124,6 +136,7 @@
 
             <hr>
         </div>
+        @endif
         <br>
         <br>
         <div class="main_1">

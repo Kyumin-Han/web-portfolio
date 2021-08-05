@@ -49,7 +49,7 @@
         <title>MyPage</title>
     </head>
     <body>
-        <img class="logo" alt="사진없어여" src="/image/HatchfulExport-All/logo_transparent.png">
+        <a href="{{ route('main') }}"><img class="logo" alt="사진없어여" src="/image/HatchfulExport-All/logo_transparent.png"></a>
 
         <!-- 사진 -->
         <img src="..." class="rounded mx-auto d-block" alt="이미지를 찾을 수 없습니다.">
@@ -70,7 +70,7 @@
                 </ul>
             </div>
             <div class="card-body">
-                <h5 class="card-title">김소은</h5>
+                <h5 class="card-title">{{ auth()->user()->name }}</h5>
                 <p class="card-text">저는 이런 사람 입니다. 등등의 스펙 설명<br>
                     연락주소<br>
                     개인 블로그(아이콘으로 링크를 걸 수 있으면 좋을 텐데)<br>
