@@ -38,18 +38,48 @@
             }
 
             /* 로고이미지 */
-            .logo{
+            .logo {
                 width: 300px;
                 height: 300px;
             }
         </style>
 
+        <script>
 
+            function firstI() {
+
+                $('#defaultMypage').remove("#defaultMypage");
+
+                let temp_html = `  <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="goCheck">
+                            <label class="form-check-label" for="defaultCheck1">
+                              어유 반가워요
+                            </label>
+                            </div>
+                        `;
+
+                let temp_html_div = `<label class="form-check-label" for="defaultCheck1">
+                                
+                        </label>
+                        <br>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <br>
+                        `;
+
+                $('#plusDiv').append(temp_html, temp_html_div)
+
+            }
+        </script>
 
         <title>MyPage</title>
+
     </head>
+
     <body>
-        <a href="{{ route('main') }}"><img class="logo" alt="사진없어여" src="/image/HatchfulExport-All/logo_transparent.png"></a>
+        <img
+            class="logo"
+            alt="사진없어여"
+            src="/image/HatchfulExport-All/logo_transparent.png">
 
         <!-- 사진 -->
         <img src="..." class="rounded mx-auto d-block" alt="이미지를 찾을 수 없습니다.">
@@ -69,14 +99,19 @@
                     </li>
                 </ul>
             </div>
+
             <div class="card-body">
+                {{-- 로그인한 사용자 이름 값을 받아와 넣어야 함 --}}
                 <h5 class="card-title">{{ auth()->user()->name }}</h5>
-                <p class="card-text">저는 이런 사람 입니다. 등등의 스펙 설명<br>
-                    연락주소<br>
-                    개인 블로그(아이콘으로 링크를 걸 수 있으면 좋을 텐데)<br>
-                    역할<br>
-                </p>
-                <a href="#" class="btn btn-primary">같이하자고 연락 보내기</a>
+
+                <div id="defaultMypage">어차피 없어질 목숨...
+                    <button onclick="firstI()">
+                        내정보 등록하기
+                    </button>
+                </div>
+
+                <div id="plusDiv"></div>
+
             </div>
         </div>
     </body>

@@ -24,17 +24,22 @@ class RegisterController extends Controller
         $phone=$request->phone;
         $birth=Carbon::create($birth_y, $birth_m, $birth_d)->toDateString();
         // dd($request);
+        // dd($password==$confirm);
 
-        // $request->validate([
-        //     'id' => 'required',
-        //     'password' => 'required|min:8',
-        //     'birth_y' => 'required',
-        //     'birth_m' => 'required',
-        //     'birth_d' => 'required',
-        //     'email' => 'required',
-        //     'image' => 'image|max:2000',
-        //     'phone' => 'required'
-        // ]);
+
+        
+
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+            'password' => 'required|confirmed',
+            'birth_y' => 'required',
+            'birth_m' => 'required',
+            'birth_d' => 'required',
+            'email' => 'required',
+            'image' => 'image',
+            'phone' => 'required'
+        ]);
 
         $user = new User();
         $user->uid = $id;

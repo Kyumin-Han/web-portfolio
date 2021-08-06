@@ -185,11 +185,13 @@
                         <label for="id">이름</label>
                     </h3>
                     <span class="box int_name">
-                        <input type="text" name="name" id="name" class="int" maxlength="20">
-
+                        <input type="text" name="name" id="name" class="int" maxlength="20" value="{{ old('name') }}">
                     </span>
-                    <span class="error_next_box"></span>
-                </div>
+                    @error('name')
+                    <div>{{ $message }}</div>
+                    @enderror
+                </div> 
+                
 
                 <!-- ID -->
                 <div>
@@ -200,7 +202,9 @@
                         <input type="text" name="id" id="id" class="int" maxlength="20">
 
                     </span>
-                    <span class="error_next_box"></span>
+                    @error('id')
+                    <div>{{ $message }}</div>
+                    @enderror
                 </div>
                 <button>중복체크</button>
 
@@ -213,7 +217,9 @@
                         <input type="password" name="password" id="pswd1" class="int" maxlength="20">
                         <span id="alertTxt">사용불가</span>
                     </span>
-                    <span class="error_next_box"></span>
+                    @error('password')
+                    <div>{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <!-- PW2 -->
@@ -222,9 +228,9 @@
                         <label for="pswd2">비밀번호 재확인</label>
                     </h3>
                     <span class="box int_pass_check">
-                        <input type="password" id="pswd2" class="int" maxlength="20">
+                        <input type="password" name="password_confirmation" id="pswd2" class="int" maxlength="20">
+                    
                     </span>
-                    <span class="error_next_box"></span>
                 </div>
 
                 <!-- BIRTH -->
