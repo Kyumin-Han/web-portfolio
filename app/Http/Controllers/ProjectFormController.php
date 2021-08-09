@@ -9,4 +9,9 @@ class ProjectFormController extends Controller
     public function projectForm() {
         return view('projectForm');
     }
+
+    public function projectStore(Request $request) {
+        $checklist=$request->all();
+        dd($checklist);
+    }
 }

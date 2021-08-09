@@ -25,12 +25,14 @@ Route::get('/register', [RegisterController::class, 'register']);
 
 Route::post('/store', [RegisterController::class, 'store']);
 
-Route::get('/loginPage', [LoginController::class, 'loginPage']);
+Route::get('/loginPage', [LoginController::class, 'loginPage'])->name('loginPage');
 
 Route::post('/login', [LoginController::class, 'login']);
+
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/mypage', [MyPageController::class, 'mypage'])->name('mypage');
 
 Route::get('/projectForm', [ProjectFormController::class, 'projectForm']);
 
-Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/projectStore', [ProjectFormController::class, 'projectStore']);

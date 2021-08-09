@@ -18,7 +18,8 @@ class LoginController extends Controller
         $credentials=['uid'=>$id, 'password'=>$password];
 
         if(!Auth::attempt($credentials)){
-            return "로그인 정보가 정확하지 않습니다.";
+            echo "<script>alert('로그인 정보가 일치하지 않습니다')</script>";
+            return view('login');
         }
         return redirect()->route('mypage', ['login'=>auth()->user()]);
     }

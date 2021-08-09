@@ -50,12 +50,38 @@
 
                 $('#defaultMypage').remove("#defaultMypage");
 
-                let temp_html = `  <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="goCheck">
-                            <label class="form-check-label" for="defaultCheck1">
-                              어유 반가워요
-                            </label>
-                            </div>
+                let temp_html = `  <form>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">
+                            자기소개
+                        </label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="formGroupExampleInput"
+                            placeholder="자신을 자유롭게 표현해봐요!">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">연락처</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="formGroupExampleInput2"
+                            placeholder="블로그 주소나, 연락처를 적어주세요!">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">기술</label>
+                        <input
+                            type="text"
+                            class="form-control"
+                            id="formGroupExampleInput2"
+                            placeholder="자신이 사용 할 수 있는 기술을 적어주세요!">
+                    </div>
+                    <div class="col-auto my-1">
+                        <button type="submit" class="btn btn-primary">저장</button>
+                      </div>
+
+                </form>
                         `;
 
                 let temp_html_div = `<label class="form-check-label" for="defaultCheck1">
@@ -66,7 +92,7 @@
                         <br>
                         `;
 
-                $('#plusDiv').append(temp_html, temp_html_div)
+                $('#plusDiv').append(temp_html)
 
             }
         </script>
@@ -76,11 +102,12 @@
     </head>
 
     <body>
+        <a href="{{ route('main') }}">
         <img
             class="logo"
             alt="사진없어여"
             src="/image/HatchfulExport-All/logo_transparent.png">
-
+        </a>
         <!-- 사진 -->
         <img src="..." class="rounded mx-auto d-block" alt="이미지를 찾을 수 없습니다.">
 
@@ -89,22 +116,25 @@
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">read ME</a>
+                        <a class="nav-link active" href="#">Read ME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">참여한 프로젝트 리스트</a>
+                        <a class="nav-link" href="#">참여한 프로젝트</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#">메뉴2</a>
+                        <a class="nav-link disabled" href="#">달력</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">회의록</a>
                     </li>
                 </ul>
             </div>
 
             <div class="card-body">
                 {{-- 로그인한 사용자 이름 값을 받아와 넣어야 함 --}}
-                <h5 class="card-title">{{ auth()->user()->name }}</h5>
+                <h5 class="card-title">김소은</h5>
 
-                <div id="defaultMypage">어차피 없어질 목숨...
+                <div id="defaultMypage">
                     <button onclick="firstI()">
                         내정보 등록하기
                     </button>

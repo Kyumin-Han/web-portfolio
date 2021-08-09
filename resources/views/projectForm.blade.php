@@ -91,6 +91,7 @@
                                     type="text"
                                     class="form-control"
                                     id="rewrite"
+                                    name="rewrite"
                                     onkeyup="enterkey()"
                                     placeholder="추가할 항목의 이름을 적어주세요">
                                                     
@@ -115,7 +116,7 @@
 
                 // 체크리스트에 추가 코드
                 let temp_html = `  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="goCheck">
+                                    <input class="form-check-input" type="checkbox" name="${title}" id="goCheck">
                                     <label class="form-check-label" for="defaultCheck1">
                                         ${title}
                                     </label>
@@ -145,7 +146,9 @@
             class="logo"
             alt="사진없어여"
             src="/image/HatchfulExport-All/logo_transparent.png">
-        <div>
+        <form action="/projectStore" method="post" enctype="multipart/form-data" onkeydown="return event.key !='Enter';">
+            @csrf
+            <div>
             <!-- 프로젝트 명 -->
             <div class="form-group">
                 <label for="exampleFormControlInput1">프로젝트 명</label>
@@ -158,8 +161,6 @@
         </div>
 
         <div>
-            <form>
-
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">최대 참여 인원 선택</label>
                     <select class="form-control" id="exampleFormControlSelect1">
@@ -171,8 +172,6 @@
                         <option>6</option>
                     </select>
                 </div>
-
-            </form>
         </div>
 
         <div class="add_people">
@@ -209,12 +208,10 @@
             </div>
             <br>
             <!-- 첨부파일 -->
-            <form>
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Example file input</label>
                     <input type="file" class="form-control-file" id="exampleFormControlFile1">
                 </div>
-            </form>
         </div>
 
         <div>
@@ -241,6 +238,7 @@
             <br>
         </div>
 
+
         <div onclick="checkPlus()">체크리스트 생성</div>
 
         <button type="button" class="btm_image" id="img_btn" onclick="checkPlus()">
@@ -254,8 +252,10 @@
 
         </div>
         <br>
-        <div id="plusDiv"></div>
 
-        <button>저장</button>
+        <div id="plusDiv"></div>
+        <button type="submit" class="btn btn-primary">저장</button>
+        </form>
+        
     </body>
 </html>
