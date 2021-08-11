@@ -11,7 +11,15 @@ class ProjectFormController extends Controller
     }
 
     public function projectStore(Request $request) {
-        $checklist=$request->all();
-        dd($checklist);
+        $checklist=$request->input('lists');
+        $title=$request->projectTitle;
+        $peole=$request->people;
+        $outline=$request->outline;
+        $expectation=$request->expectation;
+        dd($request);
+
+        
+
+        
     }
 }

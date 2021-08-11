@@ -93,30 +93,29 @@
                                     id="rewrite"
                                     name="rewrite"
                                     onkeyup="enterkey()"
-                                    placeholder="추가할 항목의 이름을 적어주세요">
-                                                    
+                                    placeholder="추가할 항목의 이름을 적어주세요">                                                    
                                 </div>
                                 `;
                 $('#check_plus').append(temp_html)
             }
+            
 
             function enterkey() {
                 if (window.event.keyCode == 13) {
                     divPlus();
                     $('input').remove("#rewrite");
-
+                
                 }
             }
 
             function divPlus() {
-
                 let title = document
                     .getElementById('rewrite')
                     .value;
 
                 // 체크리스트에 추가 코드
                 let temp_html = `  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="${title}" id="goCheck">
+                                    <input class="form-check-input" name="lists[]" type="checkbox" checked value="${title}" id="goCheck">
                                     <label class="form-check-label" for="defaultCheck1">
                                         ${title}
                                     </label>
@@ -155,6 +154,7 @@
                 <input
                     type="text"
                     class="form-control"
+                    name="projectTitle"
                     id="exampleFormControlInput1"
                     placeholder="프로젝트 명을 입력해 주세요.">
             </div>
@@ -163,7 +163,7 @@
         <div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">최대 참여 인원 선택</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select class="form-control" name="people" id="exampleFormControlSelect1">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -178,7 +178,7 @@
             <!-- 팀원추가 -->
             <div class="form-group" id="add_people">
                 <input
-                    type="text"
+                    type="email"
                     class="form-control"
                     id="exampleFormControlInput1"
                     placeholder="팀원의 이메일 주소를 적어 주세요">
@@ -204,13 +204,13 @@
             <!-- 프로젝트 개요 -->
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">프로젝트 개요</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" name="outline" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <br>
             <!-- 첨부파일 -->
                 <div class="form-group">
                     <label for="exampleFormControlFile1">Example file input</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    <input type="file" name="files[]" class="form-control-file" id="exampleFormControlFile1">
                 </div>
         </div>
 
@@ -218,7 +218,7 @@
             <!-- 기대 효과 -->
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">기대효과</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" name="expectation" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
         </div>
         <br>

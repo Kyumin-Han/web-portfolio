@@ -127,6 +127,9 @@
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">회의록</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="/projectForm">프로젝트 생성</a>
+                    </li>
                 </ul>
             </div>
 
