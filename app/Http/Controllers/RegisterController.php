@@ -6,6 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -26,18 +27,15 @@ class RegisterController extends Controller
         // dd($request);
         // dd($password==$confirm);
 
-
-        
-
         $request->validate([
             'id' => 'required',
             'name' => 'required',
-            'password' => 'required|confirmed',
-            'birth_y' => 'required',
-            'birth_m' => 'required',
-            'birth_d' => 'required',
+            'password' => 'confirmed',
+            'year' => 'required',
+            'month' => 'required',
+            'day' => 'required',
             'email' => 'required',
-            'image' => 'image',
+            'imageFile' => 'image',
             'phone' => 'required'
         ]);
 
@@ -54,6 +52,11 @@ class RegisterController extends Controller
 
         // dd($user);
         $user->save();
+
+        $credentials=['uid'=>$id, 'password'=>$password];
+        Auth::attempt($credentials);
+
+        return view('main');
     }
 
     protected function uploadPostImage($request) {
