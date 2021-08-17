@@ -36,3 +36,5 @@ Route::get('/mypage', [MyPageController::class, 'mypage'])->name('mypage');
 Route::get('/projectForm', [ProjectFormController::class, 'projectForm']);
 
 Route::post('/projectStore', [ProjectFormController::class, 'projectStore']);
+
+Route::get('/dupleId', [RegisterController::class, 'duplicated']);

@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -57,6 +58,19 @@ class RegisterController extends Controller
         Auth::attempt($credentials);
 
         return view('main');
+    }
+
+    public function duplicated(Request $request) {
+        $id = $_GET['userid'];
+
+        $uid = User::select("uid")->where("uid", $id)->exists();
+
+        if(!$uid) {
+            echo "$id 은(는) 사용 가능한 아이디입니다.";
+        } else {
+            echo "$id 은(는) 이미 사용중인 아이디입니다.";
+        }
+        // dd($uid);
     }
 
     protected function uploadPostImage($request) {

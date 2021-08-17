@@ -135,7 +135,7 @@
 
             <div class="card-body">
                 {{-- 로그인한 사용자 이름 값을 받아와 넣어야 함 --}}
-                <h5 class="card-title">김소은</h5>
+                <h5 class="card-title">{{ auth()->user()->name }}</h5>
 
                 <div id="defaultMypage">
                     <button onclick="firstI()">

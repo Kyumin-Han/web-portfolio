@@ -164,6 +164,15 @@
                 height: 300px;
             }
         </style>
+
+        <script>
+            function checkId() {
+                
+            let popupX = (window.screen.width/2)-(500/2);
+            let popupY = (window.screen.height/2)-(200/2);
+            window.open("dupleId?userid=" + document.register.id.value,"checkId", "width=500, height=200, left=" + popupX + ", top=" + popupY);
+        }
+        </script>
     </head>
     <body>
         <!-- header -->
@@ -172,7 +181,7 @@
 
         </div>
 
-        <form action="/store" method="post" enctype="multipart/form-data">
+        <form name="register" action="/store" method="post" enctype="multipart/form-data">
         @csrf
         <!-- wrapper -->
         <div id="wrapper">
@@ -182,7 +191,7 @@
                 <!-- Name -->
                 <div>
                     <h3 class="join_title">
-                        <label for="id">이름</label>
+                        <label for="name">이름</label>
                     </h3>
                     <span class="box int_name">
                         <input type="text" name="name" id="name" class="int" maxlength="20" value="{{ old('name') }}">
@@ -199,14 +208,14 @@
                         <label for="id">아이디</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" name="id" id="id" class="int" maxlength="20">
+                        <input type="text" name="id" id="id" class="int" value="{{ old('id') }}" maxlength="20">
 
                     </span>
                     @error('id')
                     <div>{{ $message }}</div>
                     @enderror
                 </div>
-                <button>중복체크</button>
+                <input type="button" value="중복체크" onclick="checkId()">
 
                 <!-- PW1 -->
                 <div>
@@ -217,9 +226,6 @@
                         <input type="password" name="password" id="pswd1" class="int" maxlength="20">
                         <span id="alertTxt">사용불가</span>
                     </span>
-                    @error('password')
-                    <div>{{ $message }}</div>
-                    @enderror
                 </div>
 
                 <!-- PW2 -->
@@ -230,6 +236,9 @@
                     <span class="box int_pass_check">
                         <input type="password" name="password_confirmation" id="pswd2" class="int" maxlength="20">
                     
+                        @error('password')
+                        <div>{{ $message }}</div>
+                        @enderror
                     </span>
                 </div>
 
@@ -243,14 +252,14 @@
                         <!-- BIRTH_YY -->
                         <div id="bir_yy">
                             <span class="box">
-                                <input type="text" name="year" id="yy" class="int" maxlength="4" placeholder="년(4자)">
+                                <input type="text" name="year" id="yy" class="int" maxlength="4" value="{{ old('year') }}" placeholder="년(4자)">
                             </span>
                         </div>
 
                         <!-- BIRTH_MM -->
                         <div id="bir_mm">
                             <span class="box">
-                                <select name="month" id="mm" class="sel">
+                                <select name="month" id="mm" value="{{ old('month') }}" class="sel">
                                     <option>월</option>
                                     <option value="01">1</option>
                                     <option value="02">2</option>
@@ -271,7 +280,7 @@
                         <!-- BIRTH_DD -->
                         <div id="bir_dd">
                             <span class="box">
-                                <input type="text" name="day" id="dd" class="int" maxlength="2" placeholder="일">
+                                <input type="text" name="day" value="{{ old('day') }}" id="dd" class="int" maxlength="2" placeholder="일">
                             </span>
                         </div>
 
@@ -285,7 +294,7 @@
                         <label for="email">본인확인 이메일</label>
                     </h3>
                     <span class="box int_email">
-                        <input type="text" name="email" id="email" class="int" maxlength="100" placeholder="필수입력">
+                        <input type="email" name="email" value="{{ old('email') }}" id="email" class="int" maxlength="100" placeholder="필수입력">
                     </span>
                     <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>
                 </div>
@@ -296,7 +305,7 @@
                         <label for="phoneNo">휴대전화</label>
                     </h3>
                     <span class="box int_mobile">
-                        <input type="tel" name="phone" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                        <input type="tel" name="phone" value="{{ old('phone') }}" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
                     </span>
                     <span class="error_next_box"></span>
                 </div>
