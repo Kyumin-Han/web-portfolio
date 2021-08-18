@@ -91,7 +91,7 @@
                                     type="text"
                                     class="form-control"
                                     id="rewrite"
-                                    name="rewrite"
+                                    name="rewrite[]"
                                     onkeyup="enterkey()"
                                     placeholder="추가할 항목의 이름을 적어주세요">                                                    
                                 </div>
@@ -103,7 +103,10 @@
             function enterkey() {
                 if (window.event.keyCode == 13) {
                     divPlus();
-                    $('input').remove("#rewrite");
+                    
+                    // $('input').remove("#rewrite");
+
+                    document.getElementsByTagName("rewrite[]").readOnly=true;
                 
                 }
             }
