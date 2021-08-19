@@ -104,9 +104,9 @@
                 if (window.event.keyCode == 13) {
                     divPlus();
                     
-                    // $('input').remove("#rewrite");
+                    $('input').remove("#rewrite");
 
-                    document.getElementsByTagName("rewrite[]").readOnly=true;
+                    // document.getElementsById("rewrite").setAttribute('readonly', true);
                 
                 }
             }

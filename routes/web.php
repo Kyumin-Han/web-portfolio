@@ -38,3 +38,5 @@ Route::get('/projectForm', [ProjectFormController::class, 'projectForm']);
 Route::post('/projectStore', [ProjectFormController::class, 'projectStore']);
 
 Route::get('/dupleId', [RegisterController::class, 'duplicated']);
+
+Route::get('/findId', [LoginController::class, 'findId']);

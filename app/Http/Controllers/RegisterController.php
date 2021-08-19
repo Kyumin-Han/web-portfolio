@@ -92,4 +92,9 @@ class RegisterController extends Controller
         }
         // dd($uid);
     }
-}
+
+   
+
+        
+    }
+

@@ -80,7 +80,7 @@
         <div style="padding-top: 50px">
         </div>
 
-        <button type="submit" class="btn btn-primary" id="ahah">아이디/비밀번호찾기</button>
+        <button onclick="location.href='/findId'" class="btn btn-primary" id="ahah">아이디/비밀번호찾기</button>
         <button type="submit" class="btn btn-primary" id="signIn">SIGN IN</button>
     </form>
     </body>

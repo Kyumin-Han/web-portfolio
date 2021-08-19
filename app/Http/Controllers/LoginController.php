@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -22,6 +23,12 @@ class LoginController extends Controller
             return view('login');
         }
         return redirect()->route('mypage', ['login'=>auth()->user()]);
+    }
+
+    public function findId(Request $request) {
+        $fid=$request->fid;
+
+        $result= User::select("uid")->where("uid", $fid)->get();
     }
 
     public function logout() {
