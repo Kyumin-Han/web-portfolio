@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('main');
 })->name('main');
 
-Route::get('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
 
 Route::post('/store', [RegisterController::class, 'store']);
 
@@ -39,4 +39,6 @@ Route::post('/projectStore', [ProjectFormController::class, 'projectStore']);
 
 Route::get('/dupleId', [RegisterController::class, 'duplicated']);
 
-Route::get('/findId', [LoginController::class, 'findId']);
+Route::get('/findForm', [LoginController::class, 'findForm']);
+
+Route::post('/findId', [LoginController::class, 'findId'])->name('findId');

@@ -25,10 +25,34 @@ class LoginController extends Controller
         return redirect()->route('mypage', ['login'=>auth()->user()]);
     }
 
-    public function findId(Request $request) {
-        $fid=$request->fid;
+    public function findForm() {
+        return view('findForm');
+    }
 
-        $result= User::select("uid")->where("uid", $fid)->get();
+    public function findId(Request $request) {
+        $name=$request->name;
+        $phone=$request->phone;
+
+        $isExist=User::select('uid')->where('name', $name)->where('phone', $phone)->exists();
+
+        if(!$isExist) {
+            echo "<script>alert('가입 정보가 없습니다')</script>";
+            return redirect()->route('register');
+        } else {
+            $id=User::select('uid')->where('name', $name)->where('phone', $phone)->pluck('uid');
+        }
+
+        return view('findIdresult', ['result'=>$id, 'name'=>$name]);
+    }
+
+    public function findPwd(Request $request) {
+        $name=$request->name;
+        $id=$request->id;
+        $phone=$request->phone;
+
+        $id=User::select('uid')->where('name', $name)->where('phone', $phone)->pluck('uid');
+
+        dd($id);
     }
 
     public function logout() {
