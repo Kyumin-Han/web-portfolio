@@ -16,7 +16,7 @@
             <input type="submit" value="아이디 찾기"/>
         </fieldset>
     </form>
-    <form action="/find" method="post">
+    <form action="/changeForm" method="post">
         @csrf<legend>비밀번호 찾기</legend>
         <table>
             <tr>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class LoginController extends Controller
@@ -45,14 +46,42 @@ class LoginController extends Controller
         return view('findIdresult', ['result'=>$id, 'name'=>$name]);
     }
 
-    public function findPwd(Request $request) {
+    public function changeForm(Request $request) {
         $name=$request->name;
         $id=$request->id;
-        $phone=$request->phone;
+        $isExist=User::select('uid')->where('name', $name)->where('uid', $id)->exists();
+        if(!$isExist) {
+            echo "<script>alert('가입 정보가 없습니다')</script>";
+            return redirect()->route('register');
+        } else {
+            return view('changePwd', ['name'=>$name, 'id'=>$id]);
+        }
+    }
+    
+    public function changePwd(Request $request) {
 
-        $id=User::select('uid')->where('name', $name)->where('phone', $phone)->pluck('uid');
+        $id=$request->id;
+        $password=$request->password;
 
-        dd($id);
+        $request->validate([
+            'password'=>'confirmed',
+        ]);
+
+        $user=User::find('uid',$id);
+
+        $user->password=bcrypt($password);
+
+        $user->save();
+
+        // $post->title=$request->title;
+        // $post->content=$request->content;
+        // $post->save();
+        
+        
+        echo "<script>alert('비밀번호 변경 완료!)</script>";
+
+        return redirect()->route('loginPage');
+
     }
 
     public function logout() {

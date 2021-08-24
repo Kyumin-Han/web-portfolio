@@ -42,3 +42,7 @@ Route::get('/dupleId', [RegisterController::class, 'duplicated']);
 Route::get('/findForm', [LoginController::class, 'findForm']);
 
 Route::post('/findId', [LoginController::class, 'findId'])->name('findId');
+
+Route::post('/changeForm', [LoginController::class, 'changeForm'])->name('changeForm');
+
+Route::post('/changePassword', [LoginController::class, 'changePwd']);
