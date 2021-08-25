@@ -26,7 +26,7 @@
                 </tr>
               </table>
             <input type="submit" value="변경하기" />
-            <input type="hidden" nmae="id" value={{ $id }}>
+            <input type="hidden" name="id" value={{ $id }}>
           </fieldset>
       </form>
 </body>

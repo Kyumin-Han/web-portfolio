@@ -67,7 +67,13 @@ class LoginController extends Controller
             'password'=>'confirmed',
         ]);
 
-        $user=User::find('uid',$id);
+        
+
+        $userid=User::select('id')->where('uid', $id)->pluck('id');
+
+        // dd($userid);
+
+        $user=User::find($userid);
 
         $user->password=bcrypt($password);
 
