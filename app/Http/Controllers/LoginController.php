@@ -61,7 +61,6 @@ class LoginController extends Controller
     public function changePwd(Request $request) {
 
         $id=$request->id;
-        $password=$request->password;
 
         $request->validate([
             'password'=>'confirmed',
@@ -69,14 +68,14 @@ class LoginController extends Controller
 
         
 
-        $userid=User::select('id')->where('uid', $id)->pluck('id');
+        $user=User::select('*')->where('uid', $id)->get();
 
-        // dd($userid);
+        
+        // dd($user);
+        $user->password=bcrypt($request->password);
 
-        $user=User::find($userid);
-
-        $user->password=bcrypt($password);
-
+        
+        
         $user->save();
 
         // $post->title=$request->title;
