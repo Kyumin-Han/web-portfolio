@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateParicipantTable extends Migration
+class CreateCheckListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateParicipantTable extends Migration
      */
     public function up()
     {
-        Schema::create('paricipant', function (Blueprint $table) {
+        Schema::create('check_lists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('project_id')->constrained()->onDelete('cascade');
+            $table->string('listname');
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateParicipantTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paricipant');
+        Schema::dropIfExists('check_lists');
     }
 }

@@ -32,7 +32,7 @@
 
         <style>
             body {
-                margin: 3%;
+                padding:3%;
                 text-align: center;
                 background-color: #E6E6FA;
             }
@@ -41,6 +41,15 @@
             .logo {
                 width: 300px;
                 height: 300px;
+            }
+
+            #card{
+                width: 70%;
+                margin: auto;
+            }
+
+            .navbar {
+                background-color: #7B68EE
             }
         </style>
 
@@ -102,6 +111,37 @@
     </head>
 
     <body>
+        <nav class="navbar fixed-top navbar-light " id="navbar">
+            <img
+                src="/image/HatchfulExport-All/logo.png"
+                width="50"
+                height="50"
+                class="d-inline-block align-top"
+                alt="">
+
+            <div>
+                
+                <img
+                src="/image/HatchfulExport-All/logo.png"
+                width="50"
+                height="50">
+
+                <img
+                src="/image/HatchfulExport-All/logo.png"
+                width="50"
+                height="50">
+
+                <img
+                src="/image/HatchfulExport-All/logo.png"
+                width="50"
+                height="50">
+                
+
+            </div>
+
+            <a href="#">logout</a>
+        </nav>
+
         <a href="{{ route('main') }}">
         <img
             class="logo"
@@ -109,10 +149,10 @@
             src="/image/HatchfulExport-All/logo_transparent.png">
         </a>
         <!-- 사진 -->
-        <img src="..." class="rounded mx-auto d-block" alt="이미지를 찾을 수 없습니다.">
+        <img src="/storage/app/public/images/sosoeueunOctocat_1630046117.png" class="rounded mx-auto d-block" alt="이미지를 찾을 수 없습니다.">
 
         <!-- 내용 -->
-        <div class="card text-center">
+        <div class="card text-center" id="card">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">

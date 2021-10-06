@@ -31,9 +31,11 @@
 
         <style>
             body {
-                margin: 3%;
+                
                 text-align: center;
                 background-color: #E6E6FA;
+                width: 60%;
+                margin: auto;
             }
 
             /* 로고이미지 */
@@ -75,9 +77,10 @@
 
                 let temp_html = `
                                 <input
-                                    type="text"
+                                    type="email"
                                     class="form-control"
                                     id="exampleFormControlInput1"
+                                    name="emails[]"
                                     placeholder="팀원의 이메일 주소를 적어 주세요">
                 
                                 `;
@@ -132,7 +135,7 @@
                                         ${title}
                                 </label>
                                 <br>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <textarea class="form-control" name="contents[]" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 <br>
                                 `;
                 $('#plusDiv').append(temp_html_div)
@@ -184,6 +187,7 @@
                     type="email"
                     class="form-control"
                     id="exampleFormControlInput1"
+                    name="emails[]"
                     placeholder="팀원의 이메일 주소를 적어 주세요">
 
             </div>
@@ -225,21 +229,7 @@
             </div>
         </div>
         <br>
-        <div>
-            진행도 바
-            <div class="progress">
-                <div
-                    class="progress-bar"
-                    role="progressbar"
-                    aria-valuenow="2"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                    style="min-width: 2em; width: 20%;">
-                    20%
-                </div>
-            </div>
-            <br>
-        </div>
+     
 
 
         <div onclick="checkPlus()">체크리스트 생성</div>
